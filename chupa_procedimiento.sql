@@ -1,0 +1,20 @@
+SET HEADING OFF
+set verify off
+SET LINES 200
+SET PAGES 2000
+COLUMN TEXT FORMAT A200
+ACCEPT PBD PROMPT "Nombre procedimiento/función: "
+SPOOL &&PBD..sql
+prompt CREATE OR REPLACE
+SELECT TEXT 
+FROM   USER_SOURCE
+WHERE  NAME = UPPER( '&&PBD' )
+ORDER  BY LINE
+/
+PROMPT /
+PROMPT SHOW ERRORS
+set heading on
+set lines 120
+set verify on
+spool off
+

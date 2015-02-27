@@ -1,0 +1,61 @@
+--------------
+-- Sección Set
+--------------
+SET LINES  100
+SET HEADING ON
+SET VERIFY OFF
+-------------------------
+-- Definición de columnas
+-------------------------
+COLUMN CLAVE_PRIMARIA FORMAT A1 
+COLUMN COLUMN_NAME    FORMAT A20 
+COLUMN TIPO           FORMAT A15 
+COLUMN DEFECTO        FORMAT A15 
+COLUMN COMENTARIO     FORMAT A43 
+COLUMN COMMENTS       FORMAT A69 
+COLUMN TABLA_FORANEA  FORMAT A20 
+-------------
+-- Parámetros
+-------------
+ACCEPT tabla PROMPT "Escribe el nombre de la tabla: "
+PROMPT .
+----------
+-- Selects
+----------
+SELECT TABLE_NAME, COMMENTS
+FROM   USER_TAB_COMMENTS
+WHERE  TABLE_NAME = UPPER( '&&tabla' )
+/
+SELECT 
+       Lower( M.COLUMN_NAME) || 'In' || ' ' ||
+       M.TABLE_NAME || '.' || M.COLUMN_NAME || '%TYPE'       
+FROM   ( SELECT N.TABLE_NAME, L.COLUMN_NAME, '*' PK
+         FROM   USER_CONS_COLUMNS L, USER_CONSTRAINTS N
+         WHERE  L.CONSTRAINT_NAME = N.CONSTRAINT_NAME
+           AND  N.TABLE_NAME = UPPER( '&&tabla' )
+           AND  N.CONSTRAINT_TYPE = 'P' ) P, -- Clave primaria
+       USER_TAB_COLUMNS M, USER_COL_COMMENTS C
+WHERE  M.TABLE_NAME  = C.TABLE_NAME
+  AND  M.COLUMN_NAME = C.COLUMN_NAME
+  AND  M.TABLE_NAME  = P.TABLE_NAME  (+)
+  AND  M.COLUMN_NAME = P.COLUMN_NAME (+)
+  AND  M.TABLE_NAME  = UPPER( '&&tabla' )
+  AND  M.COLUMN_NAME not like '%AUD%' 
+ORDER BY M.COLUMN_ID
+/
+SELECT '* @param ' ||lower( M.COLUMN_NAME )|| 'In'
+FROM   ( SELECT N.TABLE_NAME, L.COLUMN_NAME, '*' PK
+         FROM   USER_CONS_COLUMNS L, USER_CONSTRAINTS N
+         WHERE  L.CONSTRAINT_NAME = N.CONSTRAINT_NAME
+           AND  N.TABLE_NAME = UPPER( '&&tabla' )
+           AND  N.CONSTRAINT_TYPE = 'P' ) P, -- Clave primaria
+       USER_TAB_COLUMNS M, USER_COL_COMMENTS C
+WHERE  M.TABLE_NAME  = C.TABLE_NAME
+  AND  M.COLUMN_NAME = C.COLUMN_NAME
+  AND  M.TABLE_NAME  = P.TABLE_NAME  (+)
+  AND  M.COLUMN_NAME = P.COLUMN_NAME (+)
+  AND  M.TABLE_NAME  = UPPER( '&&tabla' )
+  AND  M.COLUMN_NAME not like '%AUD%'
+ORDER BY M.COLUMN_ID
+/
+SET VERIFY ON
