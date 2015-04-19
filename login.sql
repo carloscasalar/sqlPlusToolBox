@@ -1,5 +1,5 @@
 -- login.sql
--- Sección set
+-- SecciÃ³n set
 SET PAGES 10000
 SET LINES 150
 SET TIME ON
@@ -8,10 +8,5 @@ SET TRIMOUT ON
 SET SERVEROUTPUT ON
 -- Columnas para alias en las selects
 COLUMN TOTAL FORMAT 999,999,990.00
-BEGIN
-  KARIBU.SESION.NOMBREPROGRAMA( 'SQLPLUS' );
-  KARIBU.SESION.NombreUsuario(  'CCA05G' );
-END;
-/
 SHOW USER
 
