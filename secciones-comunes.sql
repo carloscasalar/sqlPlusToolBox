@@ -1,4 +1,5 @@
--- Secciones comunes de código
+-- Snippets de código a emplear en scripts de mantenimiento
+
 
   DBMS_OUTPUT.DISABLE;
   DBMS_OUTPUT.ENABLE(10000000);
@@ -64,6 +65,64 @@
          LPAD ( TO_CHAR ( ((nFin-nIni)/100), 9999.9 ), 15 ) ||
          ' Segundos' );
   END diTiempo;
+
+
+  -- NVL con salida de log cuando hay sustitución
+
+  -- nvlLogeado (cadenas) ------------------------------------------------------
+  FUNCTION nvlLogeado(vCampo VARCHAR2, 
+                      vValorPrincipal VARCHAR2, 
+                      vValorSiNull VARCHAR2)
+  RETURN VARCHAR2 IS 
+    -- Devuelve el NVL de las dos cadenas pasadas como parámetro. 
+    -- En caso de que el valor principal sea nulo entonces loguea el cambio
+    vValorFinal VARCHAR2(4000);
+  BEGIN 
+    vValorFinal := NVL(vValorPrincipal,vValorFinal);
+
+    IF vValorPrincipal IS NULL AND vValorFinal IS NOT NULL THEN
+      di(vCampo || ' reemplazado por "' || vValorFinal || '"');
+    END IF;
+
+    RETURN vValorFinal;
+  END nvlLogeado;
+
+  -- nvlLogeado (números) ------------------------------------------------------
+  FUNCTION nvlLogeado(vCampo VARCHAR2, 
+                      nValorPrincipal NUMBER, 
+                      nValorSiNull NUMBER)
+  RETURN NUMBER IS 
+    -- Devuelve el NVL de las dos cadenas pasadas como parámetro. 
+    -- En caso de que el valor principal sea nulo entonces loguea el cambio
+    nValorFinal NUMBER;
+  BEGIN 
+    nValorFinal := NVL(nValorPrincipal,nValorFinal);
+
+    IF nValorPrincipal IS NULL AND nValorFinal IS NOT NULL THEN
+      di(vCampo || ' reemplazado por "' || nValorFinal || '"');
+    END IF;
+
+    RETURN nValorFinal;
+  END nvlLogeado;
+
+  -- nvlLogeado (fechas) ------------------------------------------------------
+  FUNCTION nvlLogeado(vCampo VARCHAR2, 
+                      dValorPrincipal DATE, 
+                      dValorSiNull DATE)
+  RETURN DATE IS 
+    -- Devuelve el NVL de las dos cadenas pasadas como parámetro. 
+    -- En caso de que el valor principal sea nulo entonces loguea el cambio
+    dValorFinal DATE;
+  BEGIN 
+    dValorFinal := NVL(dValorPrincipal,dValorFinal);
+
+    IF dValorPrincipal IS NULL AND dValorFinal IS NOT NULL THEN
+      di(vCampo || ' reemplazado por "' || 
+        TO_CHAR(dValorFinal,'DD/MM/YYYY') || '"');
+    END IF;
+
+    RETURN dValorFinal;
+  END nvlLogeado;
 
 
 -- Para crear el clob con ámbito sólo de la llamada

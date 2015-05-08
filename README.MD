@@ -28,3 +28,24 @@ Esta es la lista de scripts:
 - *ddl-objeto.sql*. Dado un nombre de paquete o procedimiento de base de datos ejecuta una consulta que muestra el [ddl](http://es.wikipedia.org/wiki/Lenguaje_de_definici%C3%B3n_de_datos) necesario para crearlo.
 - *ddl-seq.sql*. Dado el nombre de una secuencia ejecuta una consulta que muestra el [ddl](http://es.wikipedia.org/wiki/Lenguaje_de_definici%C3%B3n_de_datos) necesario para crearla.
 - *desc.sql*. Describe la tabla cuyo nombre se indique señalando la clave primaria con un asterisco y mostrando una lista de las [FK](http://es.wikipedia.org/wiki/Clave_for%C3%A1nea)s definidas sobre ella. De la entrada [Script de descripción de tablas mejorado](https://tsoracle.wordpress.com/2007/07/21/script-de-descripcion-de-tablas-mejorado/).
+- *dif-col.sql*. Script para comparar columnas de dos vistas o tablas.
+- *diffila.sql*. Script que al ejecutarlo devuevle un esqueleto de consulta para ver las diferencias entre dos filas de la misma tabla o entre dos.
+- *error.sql*. Muestra la fila de código de un objeto de base de datos, algunas filas precedentes y algunas posteriores. Útil para ver errores en un paquete o similar.
+- *fk.sql*. Por Sunil Kumar. This script gives the following: 1. The list of all foreign keys of the given table; 2. The list of all foreign keys that references the given table; 3. Self referential integrity constraints.
+- *fk2.sql*. Script para obtener la lista de claves foráneas que referencian a una tabla.
+- *indices.sql*. Script que lista los índices de una tabla y sus columnas.
+- *indices_chungos.sql*. Lista los índices inválidos.
+- *informe_con.sql*. Lista las constraints de un esquema de manera ordenada. Útil para detectar diferencias entre esquemas de diferentes entornos.
+- *informe_tab.sql*. Lista las tablas de un esquema de manera ordenada. Útil para detectar diferencias entre esquemas de diferentes entornos.
+- *login.sql*. Tareas a ejecutar nada más conectarse a la base de datos desde el directorio.
+- *permisos.sql*. Otorga permisos sobre todos los objetos del esquema a un usuario o rol.
+- *secciones-comunes.sql*. Colección de snippets de código que suelo usar mucho al programar en pl/sql.
+- *secuencias.sql*. Lista las secuencias del esquema.
+- *sql_ultimos.sql*. Distintos scripts para listar las últimas sentencias ejecutadas en la base de datos. Requiere persisos sobre vistas del sistema.
+- *tablas.sql y tablas2.sql*. Listan las tablas del esquema. La 2 admite una máscara para el nombre de las tablas buscadas.
+- *trabajos.sql*. Lista los trabajos.
+- *trigger.sql*. Lista los triggers definidos sobre una tabla.
+- *ultimo_ddl.sql*. Lista la última vez que se modificaron los objetos del esquema.
+- *vererror.sql*. Lista los errores de compilación de un objeto.
+- *vistas.sql*. Lista las vistas del esquema.
+
