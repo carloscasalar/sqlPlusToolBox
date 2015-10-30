@@ -1,0 +1,4 @@
+rece.sql
+*.tmp.sql
+*.lst
+.svn
