@@ -1,9 +1,9 @@
 -- login.sql
 -- Sección set
 SET PAGES 10000
-SET LINES 150
-SET TIME ON
-SET TIMING ON
+SET LINES 120
+--SET TIME ON
+--SET TIMING ON
 SET TRIMOUT ON
 SET SERVEROUTPUT ON
 -- Columnas para alias en las selects

@@ -1,5 +1,7 @@
+.svn
+pendiente-blog
 rece.sql
 afiedt.buf
 *.tmp.sql
 *.lst
-.svn
+*.lnk
