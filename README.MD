@@ -9,6 +9,7 @@ Esta es la lista de scripts:
 - **bloqueos.sql**. Te da la lista de bloqueos.
 - **bloqueos2.sql**. Como **bloqueos.sql** pero además te da el tiempo transcurrido desde que comenzó el bloqueo.
 - **borrar_tablas.sql**. Genera una salida que es un script para borrar todas las tablas del esquema ordenado por nombre de tabla.
+- **buscacol.sql**. Busca en el esquema actual columnas de tablas cuya precisión sea mayor o igual que la indicada y cuyo tipo sea como el que se indique.
 - **campos.sql**. Dada una tabla del esquema genera una salida que podría utilizarse para definir una función que recibiese todos los campos de una fila de la tabla. También los "@param" para el javadoc.
 - **cupa_paquete.sql**. Obtiene el código fuente de un paquete de base de datos. La salida de la especificación del paquete la envía a un fichero llamado `<nombre paquete>.s.sql` y el cuerpo a un fichero llamado `<nombre paquete>.b.sql`.
 - **chupa_procedimiento.sql**. Obtiene el código fuente de un procedimiento o función de base de datos y envía la salida a un fichero que se llama `<nombre funcion>.sql`.
