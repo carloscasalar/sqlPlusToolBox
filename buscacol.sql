@@ -4,10 +4,11 @@ SET VERIFY OFF
 
 ACCEPT Precision PROMPT "Buscar columnas de precisión mayor o igual que: "
 ACCEPT Tipo PROMPT "Buscar columnas de tipo (cualquiera): "
+ACCEPT Nombre PROMPT "Buscar columnas cuyo nombre sea como (cualquiera): "
 
 COLUMN TABLE_NAME FORMAT A30
 COLUMN DATA_TYPE FORMAT A15
-COLUMN COLUMN_NAME A30
+COLUMN COLUMN_NAME FORMAT A30
 
 SELECT M.TABLE_NAME, M.COLUMN_NAME,
        M.DATA_TYPE,
@@ -16,7 +17,8 @@ SELECT M.TABLE_NAME, M.COLUMN_NAME,
        M.DATA_LENGTH
 FROM   ALL_TAB_COLUMNS M
 WHERE  M.OWNER = USER
-  AND  ('&&Tipo' IS NULL OR M.DATA_TYPE LIKE '&&Tipo')
+  AND  ('&&Tipo' IS NULL OR M.DATA_TYPE LIKE UPPER('&&Tipo'))
+  AND  ('&&Nombre' IS NULL OR M.COLUMN_NAME LIKE UPPER('&&Nombre'))
   AND  M.DATA_LENGTH >= &&Precision
   AND  NOT EXISTS(
         SELECT 'X'
