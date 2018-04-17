@@ -39,6 +39,7 @@ Esta es la lista de scripts:
 - **informe_con.sql**. Lista las constraints de un esquema de manera ordenada. Útil para detectar diferencias entre esquemas de diferentes entornos.
 - **informe_tab.sql**. Lista las tablas de un esquema de manera ordenada. Útil para detectar diferencias entre esquemas de diferentes entornos.
 - **login.sql**. Tareas a ejecutar nada más conectarse a la base de datos desde el directorio.
+- **new-uuid.sql**. Crea en el esquema actual la función `new_UUID` que genera un UUID en minúsculas.
 - **permisos.sql**. Otorga permisos sobre todos los objetos del esquema a un usuario o rol.
 - **secciones-comunes.sql**. Colección de snippets de código que suelo usar mucho al programar en pl/sql.
 - **secuencias.sql**. Lista las secuencias del esquema.
